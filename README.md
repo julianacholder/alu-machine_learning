@@ -1,0 +1,2 @@
+# alu-machine_learning
+This repository contains work on projects for the ALU Machine Learning Specialization, including math concepts, supervised learning models, unsupervised learning models, and reinforcement learning models.
