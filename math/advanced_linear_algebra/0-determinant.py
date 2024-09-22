@@ -1,50 +1,54 @@
 #!/usr/bin/env python3
 """
-Module to calculate the determinant of a matrix.
+Defines function that calculates the determinant of a matrix
 """
 
 
 def determinant(matrix):
     """
-    Calculate the determinant of a matrix. Validates that the input is a
-    list of lists and checks for squareness. Handles 0x0 matrices by
-    returning 1, in accordance with mathematical conventions.
+    Calculates the determinant of a matrix
 
-    Args:
-        matrix (list of lists): The matrix to calculate the determinant for.
+    parameters:
+        matrix [list of lists]:
+            matrix whose determinant should be calculated
 
-    Returns:
-        int or float: The determinant of the matrix, with special handling for
-        0x0 matrices.
-
-    Raises:
-        TypeError: If the matrix is not a list of lists.
-        ValueError: If the matrix is not square.
+    returns:
+        the determinant of matrix
     """
-    # Validate matrix format
-    if not isinstance(matrix, list) or not all(
-            isinstance(row, list) for row in matrix):
+    if type(matrix) is not list:
         raise TypeError("matrix must be a list of lists")
-
-    num_rows = len(matrix)
-
-    # Early return for 0x0 matrix
-    if num_rows == 0:
-        return 1
-
-    # Validate square shape
-    if any(len(row) != num_rows for row in matrix):
-        raise ValueError("matrix must be a square matrix")
-
-    # Base case for 1x1 matrix
-    if num_rows == 1:
+    height = len(matrix)
+    if height is 0:
+        raise TypeError("matrix must be a list of lists")
+    for row in matrix:
+        if type(row) is not list:
+            raise TypeError("matrix must be a list of lists")
+        if len(row) is 0 and height is 1:
+            return 1
+        if len(row) != height:
+            raise ValueError("matrix must be a square matrix")
+    if height is 1:
         return matrix[0][0]
-
-    # Recursive case for matrices larger than 1x1
-    det = 0
-    for col in range(num_rows):
-        minor = [row[:col] + row[col + 1:] for row in matrix[1:]]
-        cofactor = (-1) ** col * matrix[0][col] * determinant(minor)
-        det += cofactor
-
-    return det
+    if height is 2:
+        a = matrix[0][0]
+        b = matrix[0][1]
+        c = matrix[1][0]
+        d = matrix[1][1]
+        return ((a * d) - (b * c))
+    multiplier = 1
+    d = 0
+    for i in range(height):
+        element = matrix[0][i]
+        sub_matrix = []
+        for row in range(height):
+            if row == 0:
+                continue
+            new_row = []
+            for column in range(height):
+                if column == i:
+                    continue
+                new_row.append(matrix[row][column])
+            sub_matrix.append(new_row)
+        d += (element * multiplier * determinant(sub_matrix))
+        multiplier *= -1
+    return (d)
