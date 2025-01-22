@@ -64,4 +64,4 @@ class DeepNeuralNetwork:
         self.L = len(layers)
         self.cache = {}
         self.weights = weights
-        
+  

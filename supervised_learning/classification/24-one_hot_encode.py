@@ -36,4 +36,3 @@ def one_hot_encode(Y, classes):
         return one_hot
     except Exception as err:
         return None
-    

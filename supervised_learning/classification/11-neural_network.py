@@ -168,4 +168,4 @@ class NeuralNetwork:
         m_loss = np.sum((Y * np.log(A)) + ((1 - Y) * np.log(1.0000001 - A)))
         cost = (1 / m) * (-(m_loss))
         return (cost)
-    
+ 

@@ -88,4 +88,3 @@ class DeepNeuralNetwork:
         __weights holds all the wrights and biases of the network
         """
         return (self.__weights)
-    

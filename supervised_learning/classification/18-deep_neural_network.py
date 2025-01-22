@@ -121,4 +121,3 @@ class DeepNeuralNetwork:
             A = 1 / (1 + (np.exp(-z)))
             self.__cache["A{}".format(index + 1)] = A
         return (A, self.cache)
-    
