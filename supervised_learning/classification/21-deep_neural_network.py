@@ -238,4 +238,3 @@ class DeepNeuralNetwork:
                 self.weights["W{}".format(index)] - (alpha * dW))
             self.__weights["b{}".format(index)] = (
                 self.weights["b{}".format(index)] - (alpha * db))
-     
