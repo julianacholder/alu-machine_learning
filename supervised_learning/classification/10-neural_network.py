@@ -142,4 +142,3 @@ class NeuralNetwork:
         z2 = np.matmul(self.W2, self.__A1) + self.b2
         self.__A2 = 1 / (1 + (np.exp(-z2)))
         return (self.A1, self.A2)
- 
